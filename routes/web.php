@@ -10,18 +10,15 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
-});
-
-Route::get('/home', function () {
-    return view('home');
 });
 
 Route::group(['middleware' => 'sealVote'], function () {
     Route::get('votacao/seal/{email}', 'SealController@index');
 });
+
+Route::post('votacao/seal/enviar', 'SealController@update');
 
 
 Route::group(['middleware' => 'sealTelecomVote'], function () {

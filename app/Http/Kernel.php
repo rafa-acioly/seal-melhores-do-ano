@@ -52,7 +52,7 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'sealVote' => \App\Http\Middleware\VoteMiddleware::class,
+        'sealVote' => \App\Http\Middleware\sealVoteMiddleware::class,
         'sealTelecomVote' => \App\Http\Middleware\SealTelecomMiddleware::class,
     ];
 }

@@ -3,15 +3,20 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\SealTelecom;
+use App\Seal;
 
-class SealTelecomMiddleware
+class sealVoteMiddleware
 {
-    public $sealTelecom;
+    public $seal;
 
-    public function __construct(SealTelecom $sealTelecom)
+    /**
+     * sealVoteMiddleware constructor.
+     *
+     * @param $seal
+     */
+    public function __construct(Seal $seal)
     {
-        $this->sealTelecom = $sealTelecom;
+        $this->seal = $seal;
     }
 
     /**
@@ -24,7 +29,7 @@ class SealTelecomMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $currentUser = $this->sealTelecom
+        $currentUser = $this->seal
             ->where('uid', $request->route()->parameter('email'))
             ->get();
 
