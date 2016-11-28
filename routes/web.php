@@ -19,6 +19,11 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::group(['middleware' => 'vote'], function () {
-    Route::get('votacao/seal/{email}', 'ParticipantController@index');
+Route::group(['middleware' => 'sealVote'], function () {
+    Route::get('votacao/seal/{email}', 'SealController@index');
+});
+
+
+Route::group(['middleware' => 'sealTelecomVote'], function () {
+    Route::get('votacao/sealtelecom/{email}', 'SealTelecomController@index');
 });

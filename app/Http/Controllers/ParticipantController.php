@@ -16,10 +16,10 @@ class ParticipantController extends Controller
 
     public function index($email)
     {
-        $currentUser = $this->participant
-            ->where('uid', $email)
-            ->first();
+        $participants = $this->participant
+            ->where('uid', '<>', $email)
+            ->get();
 
-        return view('home', ['user' => $currentUser]);
+        return view('home', ['participants' => $participants]);
     }
 }

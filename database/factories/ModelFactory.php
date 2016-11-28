@@ -22,7 +22,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Participant::class, function (Faker\Generator $faker) {
+$factory->define(App\Seal::class, function (Faker\Generator $faker) {
    return [
        'uid' => $faker->md5,
        'name' => $faker->name,
