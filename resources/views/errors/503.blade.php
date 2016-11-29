@@ -40,7 +40,10 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Be right back.</div>
+                <div class="title">
+                    Votação encerrada! <br>
+                    <small>Obrigado pela participação</small>
+                </div>
             </div>
         </div>
     </body>
