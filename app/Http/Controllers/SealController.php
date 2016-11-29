@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Thanks;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Seal;
+use Illuminate\Support\Facades\Mail;
 
 class SealController extends Controller
 {
@@ -79,6 +81,7 @@ class SealController extends Controller
 
         if (!$this->voter->save()) return false;
 
+        Mail::to($this->voter->email)->send(new Thanks($this->voter));
         return true;
     }
 }

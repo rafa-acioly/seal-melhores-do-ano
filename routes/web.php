@@ -24,3 +24,5 @@ Route::post('votacao/seal/enviar', 'SealController@update');
 Route::group(['middleware' => 'sealTelecomVote'], function () {
     Route::get('votacao/sealtelecom/{email}', 'SealTelecomController@index');
 });
+
+Route::post('votacao/sealtelecom/enviar', 'SealTelecomController@update');

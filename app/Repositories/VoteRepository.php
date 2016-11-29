@@ -4,7 +4,8 @@ namespace App\Repositories;
 class VoteRepository
 {
     private $model;
-
+    private $participant;
+    private $voter;
     /**
      * VoteRepository constructor.
      *
@@ -14,24 +15,36 @@ class VoteRepository
     public function __construct($model, $userId)
     {
         $this->model = $model;
-        $this->model->find($userId);
+        $this->voter = $this->model->find($userId);
     }
 
     public function canVote()
     {
-        if (!$this->model->situation) return true;
+        if (!$this->voter->situation) return true;
 
         return false;
     }
 
-    public function addVote()
+    public function addVote($id, $section)
     {
+        try {
+            $this->participant = $this->model->find($id);
+            $this->participant->{$section} += 1;
+            $this->participant->save();
+        } catch (Exception $error) {
+            Log::error('Erro ao tentar computar os votos: ' . $error->displayMessage());
 
+            return false;
+        }
     }
 
     public function disableVoter()
     {
+        $this->voter->situation = 1;
 
+        if (!$this->voter->save()) return false;
+
+        return true;
     }
 
 }
