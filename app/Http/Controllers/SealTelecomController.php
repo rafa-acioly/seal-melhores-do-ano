@@ -51,6 +51,7 @@ class SealTelecomController extends Controller
             return redirect()->back()->with('status', 'Ocorreu um erro ao computar seu voto, tente novamente mais tarde!');
         }
 
+        $this->repository->finishVote();
         return redirect('/')->with('status', 'Seu voto foi computado, obrigado!');
     }
 

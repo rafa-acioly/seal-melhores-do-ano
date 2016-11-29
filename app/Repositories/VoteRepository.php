@@ -1,6 +1,9 @@
 <?php
 namespace App\Repositories;
 
+use App\Mail\Thanks;
+use Illuminate\Support\Facades\Mail;
+
 class VoteRepository
 {
     private $model;
@@ -45,6 +48,12 @@ class VoteRepository
         if (!$this->voter->save()) return false;
 
         return true;
+    }
+
+    public function finishVote()
+    {
+        Mail::to($this->voter->email)
+            ->send(new Thanks($this->voter));
     }
 
 }

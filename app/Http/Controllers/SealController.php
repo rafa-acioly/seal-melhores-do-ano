@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\Thanks;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use App\Seal;
-use Illuminate\Support\Facades\Mail;
+use App\Repositories\VoteRepository;
 
 class SealController extends Controller
 {
     public $sealParticipants;
     public $voter;
+    public $repository;
 
 
     public function __construct(Seal $seal)
@@ -32,56 +31,27 @@ class SealController extends Controller
 
     public function update(Request $request)
     {
-        if (!$this->canVote($request->input('voter'))) {
+        $voter = $this->sealParticipants->find($request->input('voter'));
+
+        $this->repository = new VoteRepository(new Seal(), $voter->id);
+
+        if (!$this->repository->canVote()) {
             return redirect('/')->with('status', 'Seu voto já foi realizado anterioemente!');
         }
 
         $votes = $request->except(['_token', 'voter']);
 
         foreach ($votes as $section => $to) {
-            if (!$this->addVote($to, $section)) {
-                return redirect()->back()->with('status', 'Ocorreu um erro ao computar seu voto, tente novamente mais tarde');
+            if ($this->repository->addVote($to, $section)) {
+                return redirect()->back->with('status', 'Ocorreu um erro ao processar sua votação, tente novamente mais tarde');
             }
         }
 
-        if (!$this->disableVoter()) {
+        if (!$this->repository->disableVoter()) {
             return redirect()->back()->with('status', 'Ocorreu um erro ao computar seu voto, tente novamente mais tarde!');
         }
 
+        $this->repository->finishVote();
         return redirect('/')->with('status', 'Seu voto foi computado, obrigado!');
-    }
-
-    public function addVote($id, $section)
-    {
-        try {
-            $participant = $this->sealParticipants->find($id);
-            $participant->$section += 1;
-            $participant->save();
-        } catch (Exception $error) {
-            Log::error('Erro ao tentar computar os votos: ' . $error->displayMessage());
-
-            return false;
-        }
-
-        return true;
-    }
-
-    public function canVote($voterId)
-    {
-        $this->voter = $this->sealParticipants->find($voterId);
-
-        if (!$this->voter->situation) return true;
-
-        return false;
-    }
-
-    public function disableVoter()
-    {
-        $this->voter->situation = 1;
-
-        if (!$this->voter->save()) return false;
-
-        Mail::to($this->voter->email)->send(new Thanks($this->voter));
-        return true;
     }
 }
