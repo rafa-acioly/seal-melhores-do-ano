@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Participant;
+use App\Models\Participant;
 use Closure;
 
 class VoteMiddleware
