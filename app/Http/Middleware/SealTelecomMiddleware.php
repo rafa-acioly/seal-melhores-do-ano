@@ -29,9 +29,9 @@ class SealTelecomMiddleware
             ->get();
 
         if ($currentUser->isEmpty()) {
-            return redirect('/')->with('status', 'Acesso negado');
+            return redirect('/')->with('error', 'acesso negado');
         } elseif ($currentUser[0]->situation) {
-            return redirect('/')->with('status', 'Voto já realizado');
+            return redirect('/')->with('error', 'voto já computado.');
         }
 
         return $next($request);

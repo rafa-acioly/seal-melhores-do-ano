@@ -1,48 +1,84 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Be right back.</title>
+        <title>Seal - Melhores do ano - votação encerrada</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
         <style>
+            @font-face {
+                font-family: "Chunkfive";
+                src: url("{{ asset('fonts/Chunkfive.otf') }}");
+            }
+
             html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                color: #B0BEC5;
-                display: table;
+                background-color: #1a7da4;
+                color: #636b6f;
+                /*font-family: 'Raleway', sans-serif;*/
+                font-family: 'Chunkfive';
                 font-weight: 100;
-                font-family: 'Lato', sans-serif;
+                height: 100vh;
+                margin: 0;
             }
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
+            .full-height {
+                height: 100vh;
+            }
+
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .position-ref {
+                position: relative;
+            }
+
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
             }
 
             .content {
                 text-align: center;
-                display: inline-block;
             }
 
             .title {
-                font-size: 72px;
-                margin-bottom: 40px;
+                font-size: 84px;
+                color: white;
+            }
+
+            .links > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .m-b-md {
+                margin-bottom: 30px;
+            }
+            
+            .label-error {
+                color: white;
+            }
+            
+            .label-message {
+                color: #fecc4e;
             }
         </style>
     </head>
     <body>
-        <div class="container">
+        <div class="flex-center position-ref full-height">
             <div class="content">
-                <div class="title">
-                    Votação encerrada! <br>
-                    <small>Obrigado pela participação</small>
+                <div class="title m-b-md">
+                    <span class="label-error">Votação</span>
+                    <span class="label-message">encerrada.</span>
                 </div>
             </div>
         </div>

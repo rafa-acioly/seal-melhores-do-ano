@@ -36,7 +36,7 @@ class SealController extends Controller
         $this->repository = new VoteRepository(new Seal(), $voter->id);
 
         if (!$this->repository->canVote()) {
-            return redirect('/')->with('status', 'Seu voto já foi realizado anterioemente!');
+            return redirect('/')->with('error', 'voto já computado');
         }
 
         $votes = $request->except(['_token', 'voter']);
@@ -52,6 +52,6 @@ class SealController extends Controller
         }
 
         $this->repository->finishVote();
-        return redirect('/')->with('status', 'Seu voto foi computado, obrigado!');
+        return redirect('/')->with('status', 'Obrigado!');
     }
 }

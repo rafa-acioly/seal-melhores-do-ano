@@ -29,9 +29,9 @@ class VoteMiddleware
             ->get();
 
         if ($currentUser->isEmpty()) {
-            return redirect('/')->with('status', 'Acesso negado');
+            return redirect('/')->with('error', 'Acesso negado');
         } elseif ($currentUser[0]->situation) {
-            return redirect('/')->with('status', 'Voto já realizado');
+            return redirect('/')->with('error', 'Voto já realizado');
         }
 
         return $next($request);

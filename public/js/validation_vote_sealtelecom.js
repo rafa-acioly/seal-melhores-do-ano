@@ -1,5 +1,6 @@
 $('document').ready(function () {
     $('form').submit(function (event) {
+        $('.button').addClass('is-loading');
         var $commitment = $("[name='commitment']").val();
         var $proActivity = $("[name='proActivity']").val();
         var $superation = $("[name='superation']").val();
@@ -17,8 +18,8 @@ $('document').ready(function () {
             $superation.in($commitment, $proActivity, $teamWork, $planningAndOrganization) ||
             $teamWork.in($commitment, $proActivity, $superation, $planningAndOrganization) ||
             $planningAndOrganization.in($commitment, $proActivity, $superation, $teamWork)) {
-            $('.alert').show();
-
+            $('.notification').toggleClass('is-hidden');
+            $('.button').removeClass('is-loading');
             return false;
         }
 
@@ -26,5 +27,9 @@ $('document').ready(function () {
             return false;
         }
 
+    });
+
+    $('.delete').on('click', function () {
+        $('.notification').toggleClass('is-hidden');
     });
 });
