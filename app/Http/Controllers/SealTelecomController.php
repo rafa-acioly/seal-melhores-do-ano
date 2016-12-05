@@ -36,23 +36,23 @@ class SealTelecomController extends Controller
         $this->repository = new VoteRepository(new SealTelecom(), $voter->id);
 
         if (!$this->repository->canVote()) {
-            return redirect('/')->with('status', 'Seu voto já foi computado!');
+            return redirect('/')->with('error', 'Seu voto já foi computado!');
         }
 
         $votes = $request->except(['_token', 'voter']);
 
         foreach ($votes as $section => $to) {
             if ($this->repository->addVote($to, $section)) {
-                return redirect()->back->with('status', 'Ocorreu um erro ao processar sua votação, tente novamente mais tarde');
+                return redirect()->back->with('error', 'Ocorreu um erro ao processar sua votação, tente novamente mais tarde');
             }
         }
 
         if (!$this->repository->disableVoter()) {
-            return redirect()->back()->with('status', 'Ocorreu um erro ao computar seu voto, tente novamente mais tarde!');
+            return redirect()->back()->with('error', 'Ocorreu um erro ao computar seu voto, tente novamente mais tarde!');
         }
 
-        $this->repository->finishVote();
-        return redirect('/')->with('status', 'Seu voto foi computado, obrigado!');
+        $this->repository->finishVote(['email' => 'pesquisarh@sealtelecom.com.br', 'name' => 'Seal Telecom']);
+        return redirect('/')->with('success', 'Seu voto foi computado, obrigado!');
     }
 
 }

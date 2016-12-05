@@ -18,12 +18,13 @@ $('document').ready(function () {
             $superation.in($commitment, $proActivity, $teamWork, $planningAndOrganization) ||
             $teamWork.in($commitment, $proActivity, $superation, $planningAndOrganization) ||
             $planningAndOrganization.in($commitment, $proActivity, $superation, $teamWork)) {
-            $('.notification').toggleClass('is-hidden');
-            $('.button').removeClass('is-loading');
+            $('.notification').removeClass('is-hidden');
+            $('.button').toggleClass('is-loading');
             return false;
         }
 
         if (!confirm('Deseja finalizar a votação?')) {
+            $('.button').removeClass('is-loading');
             return false;
         }
 

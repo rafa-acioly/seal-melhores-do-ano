@@ -12,10 +12,12 @@ class Thanks extends Mailable
     use Queueable, SerializesModels;
 
     protected $reciver;
+    public $mailSender;
 
-    public function __construct($reciver)
+    public function __construct($reciver, $from)
     {
         $this->reciver = $reciver;
+        $this->mailSender = $from;
     }
 
     /**
@@ -25,7 +27,7 @@ class Thanks extends Mailable
      */
     public function build()
     {
-        return $this->from('marketing@seal.com.br', 'Seal')
+        return $this->from($this->mailSender['email'], $this->mailSender['name'])
             ->subject('Melhores do ano!')
             ->view('mail.thanks')
             ->with(['name' => $this->reciver->name]);

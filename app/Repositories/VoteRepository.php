@@ -50,10 +50,10 @@ class VoteRepository
         return true;
     }
 
-    public function finishVote()
+    public function finishVote(Array $data)
     {
         Mail::to($this->voter->email)
-            ->send(new Thanks($this->voter));
+            ->send(new Thanks($this->voter, ['email' => $data['email'], 'name' => $data['name']]));
     }
 
 }
