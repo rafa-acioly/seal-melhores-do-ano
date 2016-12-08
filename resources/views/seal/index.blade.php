@@ -34,14 +34,14 @@
                 <select name="proActivity">
                     <option value="" selected disabled>Pró-atividade</option>
                     @foreach($participants as $participant)
-                        <option value="{{ $participant->id }}">{{ $participant->name }}</option>
+                        <option value="{{ $participant->id }}">{{ $participant->name }} - {{ $participant->department }}</option>
                     @endforeach
                 </select>
 
                 <select name="deliveryOfResult">
                     <option value="" selected disabled>Entrega de Resultados</option>
                     @foreach($participants as $participant)
-                        <option value="{{ $participant->id }}">{{ $participant->name }}</option>
+                        <option value="{{ $participant->id }}">{{ $participant->name }} - {{ $participant->department }}</option>
                     @endforeach
                 </select>
 
