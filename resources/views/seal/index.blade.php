@@ -27,7 +27,7 @@
                 <select name="teamWork">
                     <option value="" selected disabled>Trabalho em equipe</option>
                     @foreach($participants as $participant)
-                        <option value="{{ $participant->id }}">{{ $participant->name }}</option>
+                        <option value="{{ $participant->id }}">{{ $participant->name }} - {{ $participant->department }}</option>
                     @endforeach
                 </select>
 

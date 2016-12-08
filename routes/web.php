@@ -40,6 +40,5 @@ Route::get('/home', 'HomeController@index')->name('dashboard');
 /**
  * Rotas responsaveis por detalhes de categorias de votação
  */
-
 Route::get('votacao/seal/detalhes/{categoria}', 'HomeController@detailSealSistemas')->name('detailseal');
 Route::get('votacao/sealtelecom/detalhes/{categoria}', 'HomeController@detailSealTelecom')->name('detailsealtelecom');

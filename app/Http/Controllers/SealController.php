@@ -20,7 +20,7 @@ class SealController extends Controller
 
     public function index($email)
     {
-        $participants = $this->sealParticipants->where('uid', '<>', $email)->where('canBeVoted', 1)->get();
+        $participants = $this->sealParticipants->where('uid', '<>', $email)->where('canBeVoted', 1)->orderBy('name', 'asc')->get();
         $voter = $this->sealParticipants->where('uid', $email)->first();
 
         return view('seal.index', [

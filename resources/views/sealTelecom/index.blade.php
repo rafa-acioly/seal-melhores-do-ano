@@ -27,35 +27,35 @@
             <select name="commitment">
                 <option value="" selected disabled>Comprometimento</option>
                 @foreach($participants as $participant)
-                    <option value="{{ $participant->id }}">{{ $participant->name }}</option>
+                    <option value="{{ $participant->id }}">{{ $participant->name }} - {{ $participant->department }}</option>
                 @endforeach
             </select>
 
             <select name="proActivity">
                 <option value="" selected disabled>Pró-atividade</option>
                 @foreach($participants as $participant)
-                    <option value="{{ $participant->id }}">{{ $participant->name }}</option>
+                    <option value="{{ $participant->id }}">{{ $participant->name }} - {{ $participant->department }}</option>
                 @endforeach
             </select>
 
             <select name="superation">
                 <option value="" selected disabled>Superação</option>
                 @foreach($participants as $participant)
-                    <option value="{{ $participant->id }}">{{ $participant->name }}</option>
+                    <option value="{{ $participant->id }}">{{ $participant->name }} - {{ $participant->department }}</option>
                 @endforeach
             </select>
 
             <select name="teamWork">
                 <option value="" selected disabled>Trabalho em equipe</option>
                 @foreach($participants as $participant)
-                    <option value="{{ $participant->id }}">{{ $participant->name }}</option>
+                    <option value="{{ $participant->id }}">{{ $participant->name }} - {{ $participant->department }}</option>
                 @endforeach
             </select>
 
             <select name="planningAndOrganization">
                 <option value="" selected disabled>Planejamento e Organização</option>
                 @foreach($participants as $participant)
-                    <option value="{{ $participant->id }}">{{ $participant->name }}</option>
+                    <option value="{{ $participant->id }}">{{ $participant->name }} - {{ $participant->department }}</option>
                 @endforeach
             </select>
             <br>
