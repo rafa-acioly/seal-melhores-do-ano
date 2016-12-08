@@ -89,6 +89,25 @@
                     <div class="panel-heading">Seal telecom</div>
                     <div class="panel-body">
                         <div class="col-md-6">
+                            <h2>Vencedores</h2>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <td>Nome</td>
+                                    <td>Total de votos</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($winners as $winner)
+                                    <tr>
+                                        <td>{{ $winner->name }}</td>
+                                        <td>{{ $winner->total }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
                             <h2>Comprometimento</h2>
                             <table class="table">
                                 <thead>

@@ -25,6 +25,7 @@ class HomeController extends Controller
         return view('dashboard', [
             'sealsistemas' => $this->getSealSistemasData(),
             'sealtelecom'  => $this->getSealTelecomData(),
+            'winners' => $this->getSealTelecomWinners(),
         ]);
     }
 
@@ -32,7 +33,10 @@ class HomeController extends Controller
     {
         $list = Seal::select('name', 'email', $category)->orderBy($category, 'desc')->get();
 
-        return view('seal.detail', ['list' => $list, 'key' => $category]);
+        return view('seal.detail', [
+            'list' => $list,
+            'key' => $category,
+        ]);
     }
 
     public function detailSealTelecom($category)
@@ -40,6 +44,15 @@ class HomeController extends Controller
         $list = SealTelecom::select('name', 'email', $category)->orderBy($category, 'desc')->get();
 
         return view('seal.detail', ['list' => $list, 'key' => $category]);
+    }
+
+    public function getSealTelecomWinners()
+    {
+        return DB::table('seal_telecoms')
+            ->select(DB::raw('name, (commitment + proActivity + superation + teamWork + planningAndOrganization) as total'))
+            ->orderBy('total', 'desc')
+            ->take(5)
+            ->get();
     }
 
 }
