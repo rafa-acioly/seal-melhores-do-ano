@@ -24,35 +24,35 @@
             {!! csrf_field() !!}
             <input type="hidden" value="{{ $voter }}" name="voter">
 
-            <select name="commitment">
+            <select name="commitment" required>
                 <option value="" selected disabled>Comprometimento</option>
                 @foreach($participants as $participant)
                     <option value="{{ $participant->id }}">{{ $participant->name }} - {{ $participant->department }}</option>
                 @endforeach
             </select>
 
-            <select name="proActivity">
+            <select name="proActivity" required>
                 <option value="" selected disabled>Pró-atividade</option>
                 @foreach($participants as $participant)
                     <option value="{{ $participant->id }}">{{ $participant->name }} - {{ $participant->department }}</option>
                 @endforeach
             </select>
 
-            <select name="superation">
+            <select name="superation" required>
                 <option value="" selected disabled>Superação</option>
                 @foreach($participants as $participant)
                     <option value="{{ $participant->id }}">{{ $participant->name }} - {{ $participant->department }}</option>
                 @endforeach
             </select>
 
-            <select name="teamWork">
+            <select name="teamWork" required>
                 <option value="" selected disabled>Trabalho em equipe</option>
                 @foreach($participants as $participant)
                     <option value="{{ $participant->id }}">{{ $participant->name }} - {{ $participant->department }}</option>
                 @endforeach
             </select>
 
-            <select name="planningAndOrganization">
+            <select name="planningAndOrganization" required>
                 <option value="" selected disabled>Planejamento e Organização</option>
                 @foreach($participants as $participant)
                     <option value="{{ $participant->id }}">{{ $participant->name }} - {{ $participant->department }}</option>

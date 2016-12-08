@@ -24,21 +24,21 @@
                 {!! csrf_field() !!}
                 <input type="hidden" value="{{ $voter }}" name="voter">
 
-                <select name="teamWork">
+                <select name="teamWork" required>
                     <option value="" selected disabled>Trabalho em equipe</option>
                     @foreach($participants as $participant)
                         <option value="{{ $participant->id }}">{{ $participant->name }} - {{ $participant->department }}</option>
                     @endforeach
                 </select>
 
-                <select name="proActivity">
+                <select name="proActivity" required>
                     <option value="" selected disabled>Pró-atividade</option>
                     @foreach($participants as $participant)
                         <option value="{{ $participant->id }}">{{ $participant->name }} - {{ $participant->department }}</option>
                     @endforeach
                 </select>
 
-                <select name="deliveryOfResult">
+                <select name="deliveryOfResult" required>
                     <option value="" selected disabled>Entrega de Resultados</option>
                     @foreach($participants as $participant)
                         <option value="{{ $participant->id }}">{{ $participant->name }} - {{ $participant->department }}</option>

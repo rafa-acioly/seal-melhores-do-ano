@@ -52,7 +52,7 @@ class SealTelecomController extends Controller
         }
 
         $this->repository->finishVote(['email' => 'pesquisarh@sealtelecom.com.br', 'name' => 'Seal Telecom']);
-        return redirect('/')->with('success', 'Seu voto foi computado, obrigado!');
+        return redirect('/')->with('success', 'Obrigado!');
     }
 
 }
