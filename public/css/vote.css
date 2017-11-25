@@ -2,10 +2,8 @@ body, html {
     font-size: 1em;
 }
 
-select {
-    font-size: 1em;
-    padding: 5px 10px;
-    background: white;
+h1.title, label.label {
+    color: white;
 }
 
 .button {
@@ -17,31 +15,62 @@ select {
     text-transform: uppercase;
 }
 
-select {
-    margin: 5px;
+.hero .hero-head .logos {
+    display: flex;
+    margin: 3rem;
 }
-.hero.is-large .hero-body {
-    padding-bottom: 0 !important;
+
+.hero .hero-head .logos .logo {
+    margin: 1rem;
 }
+
+.label:not(:last-child) {
+    margin-bottom: .3em;
+}
+
+form .field-button {
+    margin-top: 2rem;
+}
+
+form .field-button button {
+    width: 150px;
+    padding-top: calc(0.300em - 1px);
+    pad
+
+    ding-bottom: calc(0.300em - 1px);
+}
+
+.word-play {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.word-play figure img {
+    align-self: center;
+}
+
+.select select {
+    padding-left: 1rem;
+    color: #B6B6B8;
+    max-width: 180px;
+}
+
+.select:not(.is-multiple)::after {
+    border: 2px solid #EC1F26;
+    border-right: 0;
+    border-top: 0;
+}
+
+.field-body > .field:not(:last-child) {
+    margin-right: 3.5rem;
+}
+
 .hero {
     background-image: url('../template/images/background.jpg');
     -webkit-background-size: cover;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: initial;
     height: 100vh;
-}
-.hero-body {
-    margin-top: 100px;
-}
-
-
-.vote-form {
-    bottom: 100px;
-}
-
-@media screen and (max-width: 860px) {
-    .vote-form {
-        margin-top: 150px;
-    }
 }

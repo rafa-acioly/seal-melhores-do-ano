@@ -11,7 +11,7 @@ $('document').ready(function () {
             for (var i = 0; i < arguments.length; i++)
                 if (arguments[i] == this) return true;
             return false;
-        }
+        };
 
         if ($commitment.in($proActivity, $superation, $teamWork, $planningAndOrganization) ||
             $proActivity.in($commitment, $superation, $teamWork, $planningAndOrganization) ||
