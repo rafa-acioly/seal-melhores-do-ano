@@ -42,8 +42,8 @@ class SealTelecomController extends Controller
         $votes = $request->except(['_token', 'voter']);
 
         foreach ($votes as $section => $to) {
-            if ($this->repository->addVote($to, $section)) {
-                return redirect()->back->with('error', 'Ocorreu um erro ao processar sua votação, tente novamente mais tarde');
+            if (!$this->repository->addVote($to, $section)) {
+                return redirect()->back()->with('error', 'Ocorreu um erro ao processar sua votação, tente novamente mais tarde');
             }
         }
 

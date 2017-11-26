@@ -33,7 +33,9 @@ class VoteRepository
         try {
             $this->participant = $this->model->find($id);
             $this->participant->{$section} += 1;
-            $this->participant->save();
+            if ($this->participant->save()) {
+                return true;
+            }
         } catch (Exception $error) {
             Log::error('Erro ao tentar computar os votos: ' . $error->displayMessage());
 

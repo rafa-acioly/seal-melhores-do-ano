@@ -11,14 +11,18 @@ $('document').ready(function () {
             for (var i = 0; i < arguments.length; i++)
                 if (arguments[i] == this) return true;
             return false;
-        }
+        };
 
         if ($commitment.in($proActivity, $superation, $teamWork, $planningAndOrganization) ||
             $proActivity.in($commitment, $superation, $teamWork, $planningAndOrganization) ||
             $superation.in($commitment, $proActivity, $teamWork, $planningAndOrganization) ||
             $teamWork.in($commitment, $proActivity, $superation, $planningAndOrganization) ||
             $planningAndOrganization.in($commitment, $proActivity, $superation, $teamWork)) {
-            $('.notification').removeClass('is-hidden');
+            swal(
+              'Ops!',
+              'Não é permitido votar em uma pessoa para mais de 1 categoria.',
+              'info'
+            )
             $('.button').toggleClass('is-loading');
             return false;
         }
