@@ -20,7 +20,6 @@
         html, body {
             background-color: #1a7da4;
             color: #636b6f;
-            /*font-family: 'Raleway', sans-serif;*/
             font-family: 'Chunkfive';
             font-weight: 100;
             height: 100vh;
@@ -89,7 +88,6 @@
                     {{ session('error') }}
                 </span>
             @endif
-
         </div>
     </div>
 </div>
