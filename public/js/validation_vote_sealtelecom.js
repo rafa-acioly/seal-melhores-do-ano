@@ -18,7 +18,11 @@ $('document').ready(function () {
             $superation.in($commitment, $proActivity, $teamWork, $planningAndOrganization) ||
             $teamWork.in($commitment, $proActivity, $superation, $planningAndOrganization) ||
             $planningAndOrganization.in($commitment, $proActivity, $superation, $teamWork)) {
-            $('.notification').removeClass('is-hidden');
+            swal(
+              'Ops!',
+              'Não é permitido votar em uma pessoa para mais de 1 categoria.',
+              'info'
+            )
             $('.button').toggleClass('is-loading');
             return false;
         }
