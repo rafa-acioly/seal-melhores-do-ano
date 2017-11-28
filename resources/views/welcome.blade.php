@@ -18,7 +18,9 @@
         }
 
         html, body {
-            background-color: #1a7da4;
+            background-image: url("{{ asset('template/images/bg.png') }}");
+            background-size: cover;
+            background-position: center;
             color: #636b6f;
             font-family: 'Chunkfive';
             font-weight: 100;
@@ -70,7 +72,7 @@
         }
 
         .label-message {
-            color: #fecc4e;
+            color: #be1e2d;
         }
     </style>
 </head>

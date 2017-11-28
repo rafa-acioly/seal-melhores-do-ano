@@ -12,7 +12,9 @@
             }
 
             html, body {
-                background-color: #1a7da4;
+                background-image: url("{{ asset('template/images/bg.png') }}");
+                background-size: cover;
+                background-position: center;
                 color: #636b6f;
                 /*font-family: 'Raleway', sans-serif;*/
                 font-family: 'Chunkfive';
@@ -69,7 +71,7 @@
             }
             
             .label-message {
-                color: #fecc4e;
+                color: #be1e2d;
             }
         </style>
     </head>
@@ -78,7 +80,7 @@
             <div class="content">
                 <div class="title m-b-md">
                     <span class="label-error">Votação</span>
-                    <span class="label-message">encerrada.</span>
+                    <span class="label-message">Encerrada.</span>
                 </div>
             </div>
         </div>
